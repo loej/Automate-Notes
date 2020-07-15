@@ -1,5 +1,5 @@
 #!/usr/sbin/python
-# Allows the terminal to read the python file
+# Allows the terminal to read the notes.py
 
 # Automating my note taking using LaTeX and Vim
 import os
@@ -25,7 +25,8 @@ class Automate:
 
 
 def printPrompt():
-    print('test')
+    prompt = Automate('ls', 'Automate Folder')
+    print(prompt.command)
 
 
 def terminalCommand():
@@ -36,7 +37,6 @@ def terminalCommand():
     # This is going to take in the argument from running the file
     for p1.command in sys.argv:
         print(p1.command)
-    print('hello')
 
 
 def main():

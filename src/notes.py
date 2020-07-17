@@ -9,8 +9,8 @@ import sys
 
 
 class Notes:
-    # Prints the welcoming prompt in terminal.
-    pass
+    def __init__(self, folder):
+        self.folder = folder
 
 
 class Vim:
@@ -19,14 +19,28 @@ class Vim:
 
 class Automate:
 
-    def __init__(self, command, location):
-        self.command = command
-        self.location = location
+    pass
 
 
 def printPrompt():
-    prompt = Automate('ls', 'Automate Folder')
-    print(prompt.command)
+    print('Automate Notes - Using LaTeX and Vim \n')
+    print('Here are your current folders: ' + str(notesObj.folder))
+    try:
+        newFolder = int(
+            input('To make a new folder for a class press input 1: '))
+        useFolder = str(
+            input('To access your previous files just type the name: '))
+    except ValueError:
+        print('Oops! that is not a valid input')
+
+    # Calling autoMateNotes function
+
+
+def autoMateNotes():
+    if printPrompt().newFolder == 1:
+        print('test')
+    else:
+        sys.exit()
 
 
 def terminalCommand():
@@ -41,7 +55,7 @@ def terminalCommand():
 
 def main():
     printPrompt()
-    terminalCommand()
+    autoMateNotes()
 
 
 if __name__ == "__main__":

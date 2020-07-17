@@ -7,61 +7,75 @@ import subprocess
 import math
 import sys
 
+# Class notes.
+
 
 class Notes:
+    # Constructor that contains the folder.
     def __init__(self, folder):
         self.folder = folder
 
 
-def makeNewFile():
-    makeNewFile = input('To make a new file enter 1, if not press 2: ')
+# Global list of directories.
+folderLst = ['calc']
+
+# Initial input value to create folder or continue program.
+
+
+def inputValueInt():
+    makeNewFile = input('Create a folder or continue: ')
     if not(makeNewFile.isdigit()):
         while True:
-            input4 = input('Please enter a number: ')
-            if input4.isdigit():
+            checkforNumber = input('Please enter a number: ')
+            if checkforNumber.isdigit():
                 break
+            return makeNewFile
+
+# Input value to search for a new folder.
 
 
-def enterNewFile():
-    enterOldFile = str(input('To access an old file, type its name: '))
+def inputValueString():
+    enterOldFile = str(input('Access created files: '))
     if enterOldFile.isdigit():
         while True:
-            input3 = input(('Please enter a name: '))
-            if not(input3.isdigit()):
+            checkforString = input(('Please enter a name: '))
+            if not(checkforString.isdigit()):
                 break
+            return enterOldFile
     # calls AutomateNotes()
-    autoMoteNotes()
+    autoMoteNotes(enterOldFile)
+
+# Displays prompt and options for the user.
 
 
 def printPrompt():
-    folderLst = ['calc']
     notesObj = Notes(folderLst)
-    print('Automate Notes - Using LaTeX and Vim \n')
-    print('Here are your current folders: ' + str(notesObj.folder))
+    # print('\n')
+    print('Automate Your Notes Using LaTeX and Vim \n ')
+    # print('<----------------------------------->')
+    print('Options:\n + To create a new folder enter 1, to continue press 2. \n + To open an existing file enter its name. \n')
+    print('Current Folders: \n' + str(notesObj.folder) + '\n')
 
-    makeNewFile()
-    enterNewFile()
+    inputValueInt()
+    inputValueString()
+
+# Automates notes using terminal and import os.
 
 
-def autoMoteNotes():
-    if enterNewFile == str:
-        print('test')
-
-
-# def terminalCommand():
-#     # # Command being used.
-#     # p1 = Automate('notes', '12')
-#     # p1.command = 'notes'
-
-#     # # This is going to take in the argument from running the file
-#     # for p1.command in sys.argv:
-#     #     print(p1.command)
-#     pass
+def autoMoteNotes(x):
+    # objectNotes = Notes(folderLst)
+    # for h in range(len(objectNotes.folder)):
+    #     print(h)
+    if not(x.isdigit()):
+        print('success')
+    path = os.getcwd()
+    print('the path is: %s' % path)
 
 
 def main():
     printPrompt()
 
 
+# Main function
 if __name__ == "__main__":
     main()

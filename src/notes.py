@@ -13,7 +13,12 @@ class Notes:
     # Constructor that contains the folder.
     def __init__(self, folder):
         self.folder = folder
+        self.next = None
 
+class LinkedList:
+    
+    def __init__(self):
+        self.head = None
 
 # Global list of Folders.
 folderLst = []

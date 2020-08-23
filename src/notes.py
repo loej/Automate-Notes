@@ -1,14 +1,13 @@
-#!/usr/sbin/python
+#!/usr/bin/python3
 # Allows the terminal to read the notes.py
 
-# Automating my note taking using LaTeX and Vim
+# Automating my note taking using LaTeX and Vim.
 import os
 import subprocess
 import math
 import sys
 
-# Class notes.
-
+# Class Notes.
 
 class Notes:
     # Constructor that contains the folder.
@@ -16,64 +15,42 @@ class Notes:
         self.folder = folder
 
 
-# Global list of directories.
-folderLst = ['calc']
+# Global list of Folders.
+folderLst = []
+noteObject = Notes(folderLst)
 
-# Initial input value to create folder or continue program.
+def createFolder(self):
+    while True:
+        current_path = os.getcwd()
+        print("Your current path is: " + current_path)
+        folder_input = input("Create a new folder or continue: ")
+        if folder_input == "exit" or folder_input == "done":
+            displayFolder(self)
+            break    
+        else:
+            noteObject.folder.append(folder_input)
+            
+def createDirectory(self):
+    for folders in noteObject.folder:
+        str(folders)
+    home = "~/12222"
+    # path = os.path.join(home, folders)
+    os.mkdir(home)
 
-
-def inputValueInt():
-    makeNewFile = input('Create a folder or continue: ')
-    if not(makeNewFile.isdigit()):
-        while True:
-            checkforNumber = input('Please enter a number: ')
-            if checkforNumber.isdigit():
-                break
-            return makeNewFile
-
-# Input value to search for a new folder.
-
-
-def inputValueString():
-    enterOldFile = str(input('Access created files: '))
-    if enterOldFile.isdigit():
-        while True:
-            checkforString = input(('Please enter a name: '))
-            if not(checkforString.isdigit()):
-                break
-            return enterOldFile
-    # calls AutomateNotes()
-    autoMoteNotes(enterOldFile)
-
-# Displays prompt and options for the user.
-
-
-def printPrompt():
-    notesObj = Notes(folderLst)
-    # print('\n')
-    print('Automate Your Notes Using LaTeX and Vim \n ')
-    # print('<----------------------------------->')
-    print('Options:\n + To create a new folder enter 1, to continue press 2. \n + To open an existing file enter its name. \n')
-    print('Current Folders: \n' + str(notesObj.folder) + '\n')
-
-    inputValueInt()
-    inputValueString()
-
-# Automates notes using terminal and import os.
-
-
-def autoMoteNotes(x):
-    # objectNotes = Notes(folderLst)
-    # for h in range(len(objectNotes.folder)):
-    #     print(h)
-    if not(x.isdigit()):
-        print('success')
-    path = os.getcwd()
-    print('the path is: %s' % path)
+def displayFolder(self):
+    if not noteObject.folder:
+        print("You don't have any folders!")
+    else:
+        print("Your new folder(s) are: ")
+        for index in noteObject.folder:
+            print(index)
+        createDirectory(self)
 
 
 def main():
-    printPrompt()
+    print("Automate your notes using LaTeX and Vim!")
+    print("Commands: 1. Exit 2. Done 3. Cont\n")
+    createFolder(folderLst)
 
 
 # Main function
